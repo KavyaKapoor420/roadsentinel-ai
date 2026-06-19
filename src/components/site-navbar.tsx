@@ -1,21 +1,22 @@
 import { Link } from "@tanstack/react-router";
 import { Brand } from "./brand";
-import { Button } from "@/components/ui/button";
+import { Moon } from "lucide-react";
 
 export function SiteNavbar() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/70 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+    <header className="absolute top-0 z-40 w-full">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-10">
         <Brand />
-        <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-          <a href="/#features" className="transition-colors hover:text-foreground">Features</a>
-          <Link to="/dashboard" className="transition-colors hover:text-foreground">Dashboard</Link>
-          <a href="/#docs" className="transition-colors hover:text-foreground">Documentation</a>
-          <a href="/#faq" className="transition-colors hover:text-foreground">FAQ</a>
-        </nav>
-        <div className="flex items-center gap-2">
-          <Button asChild variant="ghost" size="sm"><Link to="/login">Login</Link></Button>
-          <Button asChild size="sm"><Link to="/register">Sign Up</Link></Button>
+        <div className="flex items-center gap-5">
+          <Link to="/login" className="text-sm font-semibold text-foreground transition-colors hover:text-primary">
+            Sign In
+          </Link>
+          <button
+            aria-label="Toggle theme"
+            className="grid h-8 w-8 place-items-center rounded-full text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <Moon className="h-4 w-4" />
+          </button>
         </div>
       </div>
     </header>

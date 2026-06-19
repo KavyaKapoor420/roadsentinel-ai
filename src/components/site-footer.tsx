@@ -1,35 +1,26 @@
 import { Brand } from "./brand";
+import { Twitter, Linkedin, Mail } from "lucide-react";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60 bg-background/70">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 md:grid-cols-4">
-        <div className="space-y-3">
-          <Brand />
-          <p className="text-sm text-muted-foreground max-w-xs">
-            Enterprise AI for traffic enforcement. Detect, verify and report violations in real time.
-          </p>
+    <footer className="border-t border-border/40 bg-background">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-6 py-12">
+        <Brand />
+        <div className="flex items-center gap-3">
+          {[Twitter, Linkedin, Mail].map((Icon, i) => (
+            <a
+              key={i}
+              href="#"
+              className="grid h-9 w-9 place-items-center rounded-full border border-border/60 text-muted-foreground transition-colors hover:border-primary/60 hover:text-foreground"
+            >
+              <Icon className="h-4 w-4" />
+            </a>
+          ))}
         </div>
-        <FooterCol title="Product" items={["Features", "Dashboard", "API", "Changelog"]} />
-        <FooterCol title="Company" items={["About", "Customers", "Careers", "Contact"]} />
-        <FooterCol title="Legal" items={["Privacy", "Terms", "Security", "DPA"]} />
-      </div>
-      <div className="border-t border-border/60">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 text-xs text-muted-foreground">
-          <span>© {new Date().getFullYear()} TrafficVision AI</span>
-          <span>Built for traffic enforcement teams.</span>
-        </div>
+        <p className="text-xs text-muted-foreground">
+          © {new Date().getFullYear()} TrafficVision AI · Built for traffic enforcement teams
+        </p>
       </div>
     </footer>
-  );
-}
-function FooterCol({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div>
-      <h4 className="mb-3 text-sm font-semibold">{title}</h4>
-      <ul className="space-y-2 text-sm text-muted-foreground">
-        {items.map((i) => <li key={i}><a href="#" className="hover:text-foreground">{i}</a></li>)}
-      </ul>
-    </div>
   );
 }
