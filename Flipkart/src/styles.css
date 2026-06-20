@@ -1,0 +1,379 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Dark-only theme (no toggle) */
+:root {
+  --radius: 1.25rem;
+
+  --background: oklch(0.08 0.01 250);
+  --foreground: oklch(1 0 0);
+
+  --card: rgba(12, 14, 22, 0.62);
+  --card-foreground: oklch(1 0 0);
+
+  --popover: rgba(8, 9, 15, 0.85);
+  --popover-foreground: oklch(1 0 0);
+
+  --primary: oklch(0.65 0.21 255);
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: rgba(255, 255, 255, 0.08);
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: rgba(255, 255, 255, 0.06);
+  --muted-foreground: oklch(0.88 0.01 250);
+
+  --accent: oklch(0.78 0.16 70);
+  --accent-foreground: oklch(0.12 0.01 250);
+
+  --destructive: oklch(0.62 0.23 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --success: oklch(0.7 0.16 155);
+  --warning: oklch(0.78 0.16 70);
+
+  --border: rgba(255, 255, 255, 0.2);
+  --input: rgba(0, 0, 0, 0.35);
+  --ring: oklch(0.65 0.21 255 / 50%);
+
+  --chart-1: oklch(0.65 0.21 255);
+  --chart-2: oklch(0.78 0.16 70);
+  --chart-3: oklch(0.7 0.16 155);
+  --chart-4: oklch(0.68 0.2 305);
+  --chart-5: oklch(0.7 0.2 20);
+
+  --sidebar: rgba(8, 9, 15, 0.76);
+  --sidebar-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.65 0.21 255);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: rgba(255, 255, 255, 0.12);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: rgba(255, 255, 255, 0.22);
+  --sidebar-ring: oklch(0.65 0.21 255 / 50%);
+
+  --grid-line: oklch(1 0 0 / 3%);
+
+  /* Glass tokens */
+  --glass-bg: rgba(12, 14, 22, 0.62);
+  --glass-bg-dense: rgba(8, 9, 15, 0.76);
+  --glass-border: rgba(255, 255, 255, 0.22);
+  --glass-border-light: rgba(255, 255, 255, 0.35);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
+  --glass-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.25);
+  --glow-primary: oklch(0.65 0.21 255 / 0.35);
+  --glow-accent: oklch(0.78 0.16 70 / 0.2);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    background: linear-gradient(rgba(4, 4, 6, 0.72), rgba(4, 4, 6, 0.72)), url('/traffic_city_bg.png') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--color-foreground);
+    min-height: 100vh;
+  }
+  #root {
+    background: transparent;
+    min-height: 100vh;
+  }
+  body {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Grid background pattern matching the reference screenshots */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.bg-grid-fade {
+  position: relative;
+}
+.bg-grid-fade::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at top, transparent 0%, oklch(0.08 0.01 250 / 0.6) 80%);
+}
+
+/* ──────────────────────────────────────
+   Ambient gradient blobs (glass refraction backdrop)
+   ────────────────────────────────────── */
+.ambient-glow {
+  position: relative;
+}
+.ambient-glow::before,
+.ambient-glow::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 9999px;
+  filter: blur(120px);
+}
+.ambient-glow::before {
+  top: -10%;
+  left: -5%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, oklch(0.65 0.21 255 / 0.12) 0%, transparent 70%);
+}
+.ambient-glow::after {
+  bottom: -15%;
+  right: -10%;
+  width: 45%;
+  height: 45%;
+  background: radial-gradient(circle, oklch(0.7 0.16 305 / 0.08) 0%, transparent 70%);
+}
+
+/* ──────────────────────────────────────
+   Glass panel and card utilities
+   ────────────────────────────────────── */
+.glass-panel, .glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px) saturate(1.2);
+  -webkit-backdrop-filter: blur(25px) saturate(1.2);
+  border: 1px solid var(--glass-border);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 12px 6px rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel::before, .glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.glass-panel::after, .glass-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.7),
+    transparent,
+    rgba(255, 255, 255, 0.3)
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.glass-panel-dense {
+  background: var(--glass-bg-dense);
+  backdrop-filter: blur(32px) saturate(1.3);
+  -webkit-backdrop-filter: blur(32px) saturate(1.3);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.10),
+    inset 0 0 16px 8px rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel-dense::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.glass-panel-dense::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5),
+    transparent,
+    rgba(255, 255, 255, 0.2)
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.glass-nav {
+  background: rgba(20, 20, 25, 0.45);
+  backdrop-filter: blur(32px) saturate(1.3);
+  -webkit-backdrop-filter: blur(32px) saturate(1.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Glass button utility */
+.glass-btn {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 0 4px 2px rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.glass-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 0 6px 3px rgba(255, 255, 255, 0.1);
+}
+
+/* Glass hover — subtle brightness lift */
+.glass-hover {
+  transition: all 0.2s ease;
+}
+.glass-hover:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 0 6px 3px rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ──────────────────────────────────────
+   Glow effects
+   ────────────────────────────────────── */
+.glow-primary {
+  box-shadow: 0 0 20px -4px var(--glow-primary), 0 0 60px -10px var(--glow-primary);
+}
+.glow-primary-btn {
+  background: linear-gradient(135deg, oklch(0.65 0.21 255) 0%, oklch(0.55 0.22 265) 100%);
+  box-shadow: 0 0 20px -4px var(--glow-primary), 0 0 60px -10px var(--glow-primary);
+  transition: all 0.25s ease;
+}
+.glow-primary-btn:hover {
+  box-shadow: 0 0 28px -2px var(--glow-primary), 0 0 80px -8px var(--glow-primary);
+  filter: brightness(1.1);
+}
+
+.text-gradient {
+  background: linear-gradient(180deg, oklch(0.99 0 0) 0%, oklch(0.65 0.04 260) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ──────────────────────────────────────
+   Glass tooltip (for Recharts)
+   ────────────────────────────────────── */
+.glass-tooltip {
+  background: var(--glass-bg-dense) !important;
+  backdrop-filter: blur(20px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.2) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+.text-shadow-hero {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 4px 30px rgba(0, 0, 0, 0.85);
+}
